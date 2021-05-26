@@ -86,10 +86,10 @@
                                                 <form id="contact-form" action="javascript:void(0)" method="post">
                                                     <div>
                                                         <div id="success-contact-form" class="mx-0"></div>
-                                                        <input type="text" name="name" id="name" placeholder="Tú nombre de esclavo es" class="border-radius-4 bg-white medium-input">
-                                                        <input type="text" name="email" id="email" placeholder="Correo" class="border-radius-4 bg-white medium-input">
+                                                        <input type="text" name="name" id="name" onkeyup="checkform()" placeholder="Tú nombre de esclavo es" class="border-radius-4 bg-white medium-input">
+                                                        <input type="text" name="email" id="email" onkeyup="checkform()" placeholder="Correo" class="border-radius-4 bg-white medium-input">
                                                         
-                                                            <select name="michis" id="michis" class="border-radius-4 bg-white medium-input " style="color:#444038;">
+                                                            <select name="michis" id="michis" onchange="checkform()" class="border-radius-4 bg-white medium-input " style="color:#444038;">
                                                                 <option value="" disabled selected hidden>¿Cuántos michis tienes?</option>
                                                                 <option value="1" >&#128008;</option>
                                                                 <option value="2">&#128008; &#128008;</option>
@@ -99,7 +99,7 @@
                                                        
                                                         <!-- <input type="text" name="subject" id="subject" placeholder="Subject" class="border-radius-4 bg-white medium-input"> -->
                                                         <!-- <textarea name="comment" id="comment" placeholder="Your Message" rows="5" class="border-radius-4 bg-white medium-textarea"></textarea> -->
-                                                        <button id="contact-us-button" type="submit" class="btn btn-small border-radius-4 btn-c-2">Enviar</button> 
+                                                        <button id="contact-us-button" disabled type="submit" class="btn btn-small border-radius-4 btn-c-2">Enviar</button> 
                                                     </div>
                                                 </form>
                                           
@@ -115,13 +115,13 @@
                                                 </div>
                                             </form> -->
                                         </div>
-                                        <div class="text-center social-icon-style-10 margin-eight-top sm-margin-30px-top">
+                                        <!-- <div class="text-center social-icon-style-10 margin-eight-top sm-margin-30px-top">
                                             <ul class="large-icon mobile-small mb-0">
                                                 <li><a class="facebook text-white-2" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i><span></span></a></li>
                                                 <li><a class="twitter text-white-2" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i><span></span></a></li>
                                                 <li><a class="linkedin text-white-2" href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span></span></a></li>
                                             </ul>
-                                        </div>  
+                                        </div>   -->
                                     </div>
                                 </div>
                             </div>
@@ -196,5 +196,30 @@
         <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>-->
         <!-- setting -->
         <script type="text/javascript" src="js/main.js"></script>
+        <script>
+    async function checkform()
+    {
+        var error = true;
+        var michis = parseInt(document.getElementById('michis').selectedIndex);
+
+        await $('#contact-form input[type=text]').each(function (index) {
+            if (index == 0) {
+                if ($(this).val() == null || $(this).val() == "") {
+                    error = false;
+                }
+            } else if (index == 1) {
+                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
+                    error = false;
+                }
+            }
+        });
+
+        if (michis >= 1)
+        {
+            document.getElementById('contact-us-button').disabled = !error;
+        }
+        return error;
+    }
+        </script>
     </body>
 </html>

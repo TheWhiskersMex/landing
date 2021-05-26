@@ -1,14 +1,25 @@
 
 <?php 
+include_once '../email-templates/subscribe-newsletter.php';
+include_once '../db/registry.php';
+
+$emails = new MailTo();
+$registry = new Registry();
+
   if(isset($_POST['email'])){
 	  
 	$name =$_POST["name"];
 	$from =$_POST["email"];
 	$michis=$_POST["michis"];
 	// $comment=$_POST["comment"];
+
+	$registry->regnewMichi($name, $from, $michis);
+	//if (!$reg) return;
+	$emails->sendConfMail($from, $name, $michis);
 	
 	// Email Receiver Address
-	$receiver="isaac@thewhiskers.club";
+	//$receiver="isaac@thewhiskers.club";
+	$receiver="elmichi@thewhiskers.club";
 	$subject="Nuevo suscriptor";
 
 	$message = "

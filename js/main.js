@@ -1593,14 +1593,23 @@ $(document).ready(function () {
     }
 
     //Contact us form
+
+    // $('#name').keyup(function ()
+    // {
+    //     let val = $('#name').val();
+    //     console.log(val);
+    // });
+
     $(document).on("click", '#contact-us-button', function () {
         var error = ValidationContactForm();
         if (error) {
-            $.ajax({
+            $.ajax
+            ({
                 type: "POST",
                 url: "email-templates/contact.php",
                 data: $("#contact-form").serialize(),
-                success: function (result) {
+                success: function (result)
+                {
                     // Un-comment below code to redirect user to thank you page.
                     //window.location.href="thank-you.html";
 
@@ -1637,6 +1646,7 @@ $(document).ready(function () {
         return error;
     }
 
+ 
     //Contact us form 2
     $('#contact-us-button-2').on("click", function () {
         var error = ValidationContactForm2();
