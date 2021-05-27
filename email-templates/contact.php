@@ -2,6 +2,7 @@
 <?php 
 include_once '../email-templates/subscribe-newsletter.php';
 include_once '../db/registry.php';
+include_once '../slack/slack.php';
 
 $emails = new MailTo();
 $registry = new Registry();
@@ -16,6 +17,7 @@ $registry = new Registry();
 	$registry->regnewMichi($name, $from, $michis);
 	//if (!$reg) return;
 	$emails->sendConfMail($from, $name, $michis);
+    
 	
 	// Email Receiver Address
 	//$receiver="isaac@thewhiskers.club";
@@ -68,6 +70,19 @@ $headers .= 'From: <'.$from.'>' . "\r\n";
    	 //Fail Message
       echo "Oh oh! No hemos podido guardar tus datos, por favor intenta de nnuevo.";
    }
-
+   
+   // Post to webhook stored in access object
+   //slack("Nuevo michi: $name", "#nuevos-registros");
+   $hook = 'https://hooks.slack.com/services/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';
+   $slack = new Slack($hook);
+   $slack->setDefaultUsername("SlackBot");
+   $slack->setDefaultChannel("#nuevos-registros");
+   
+   // Creates a new instance of message object
+   $message = new SlackMessage($slack);
+   $message->setChannel("#nuevos-registros");
+   $message->setUsername("SlackBot");
+   $message->setText("Nuevo Michi: $name");
+   $slack->send($message); // sends the message to slack channel
 }
 ?>
