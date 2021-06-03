@@ -14,16 +14,37 @@ $registry = new Registry();
 	$michis=$_POST["michis"];
 	// $comment=$_POST["comment"];
 
-	$registry->regnewMichi($name, $from, $michis);
-	//if (!$reg) return;
-	$emails->sendConfMail($from, $name, $michis);
+	$reg = $registry->regnewMichi($name, $from, $michis);
+    if ($reg == 2)
+    {
+      echo '
+      <script type="text/JavaScript">
+      document.getElementById("correo-duplicado").style.display="block";
+      </script>';
+    //$emails->sendConfMail($from, $name, $michis);
+    //echo "Oh oh! Este correo ya se encuentra registrado.";
+    return;
+    }
+    else if ($reg == 1)
+    {
+      echo '
+      <script type="text/JavaScript">
+      document.getElementById("mensaje-incorrecto").style.display="block";
+      </script>';
+      return;
+    }
+    else
+    {
+      echo '
+      <script type="text/JavaScript">
+      document.getElementById("mensaje-correcto").style.display="block";
+      </script>';
+
+    $emails->sendConfMail($from, $name, $michis);
     
-	
 	// Email Receiver Address
-	//$receiver="isaac@thewhiskers.club";
 	$receiver="elmichi@thewhiskers.club";
 	$subject="Nuevo suscriptor";
-
 	$message = "
 	<html>
 	<head>
@@ -55,24 +76,25 @@ $registry = new Registry();
 	</body>
 	</html>
 	";
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-// More headers
-$headers .= 'From: <'.$from.'>' . "\r\n";
-   if(mail($receiver,$subject,$message,$headers))  
+    // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    // More headers
+    $headers .= 'From: <'.$from.'>' . "\r\n";
+   if (mail($receiver,$subject,$message,$headers))  
    {
 	   //Success Message
-      echo "Gracias! Hemos guardado tus datos!";
+      //echo "Gracias! hemos guardado tus datos!";
+     
    }
    else
    {	
    	 //Fail Message
-      echo "Oh oh! No hemos podido guardar tus datos, por favor intenta de nnuevo.";
+      //echo "Oh oh! No hemos podido guardar tus datos, por favor intenta de nuevo.";
+      
    }
    
    // Post to webhook stored in access object
-   //slack("Nuevo michi: $name", "#nuevos-registros");
    $hook = 'https://hooks.slack.com/services/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';
    $slack = new Slack($hook);
    $slack->setDefaultUsername("SlackBot");
@@ -81,8 +103,9 @@ $headers .= 'From: <'.$from.'>' . "\r\n";
    // Creates a new instance of message object
    $message = new SlackMessage($slack);
    $message->setChannel("#nuevos-registros");
-   $message->setUsername("SlackBot");
-   $message->setText("Nuevo Michi: $name");
+   $message->setUsername("El Jefe Michi");
+   $message->setText(":smirk_cat: ¡Tenemos un nuevo esclavo! :smirk_cat:\n\nSu nombre es: $name,\nsu correo: $from y \nobedece a: $michis Michis!");
    $slack->send($message); // sends the message to slack channel
+    }
 }
 ?>

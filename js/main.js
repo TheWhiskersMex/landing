@@ -1591,20 +1591,62 @@ $(document).ready(function () {
         });
         return error;
     }
+    
+    $('#michis').change(function() {
+    //console.log($(this).val());
+    const element = document.querySelector('#michis');
+        element.classList.remove('required-error');
+        checkform();
+    });
+    
+   // $('#contact-us-button').hover(function() {
+//    const element = document.querySelector('.btn-secondary');
+//        element.classList.remove('btn-secondary');
+//        element.classList.add('btn-primary');
+//    });
+    
+    
+    function checkform()
+    {
+        var error = true;
+        document.getElementById('contact-us-button').disabled = true;
+        $('#contact-form input[type=text]').each(function (index) { // iterates all input fields from the #contact-form
+            if (index == 0 || index == 1) {
+                if ($(this).val() == null || $(this).val() == "") { // checks if input is not empty
+                    error = false;
+                }
+            }
+        });
+        let index = parseInt(document.getElementById('michis').selectedIndex);
+        if (index >= 1)
+        {
+        // Enable / disable the send button
+        document.getElementById('contact-us-button').disabled = !error;
+        }
+        return error;
+    }
 
     //Contact us form
+    
+    $('#name').keyup(function ()
+     {
+     checkform();
+     });
+     
+    $('#email').keyup(function ()
+     {
+     checkform();
+     });
 
-    // $('#name').keyup(function ()
-    // {
-    //     let val = $('#name').val();
-    //     console.log(val);
-    // });
+//     $('#name').keyup(function ()
+//     {
+//         let val = $('#name').val();
+//         console.log(val);
+//     });
 
     $(document).on("click", '#contact-us-button', function () {
         var error = ValidationContactForm();
-        if (error) {
-            $.ajax
-            ({
+        if (error) { $.ajax({
                 type: "POST",
                 url: "email-templates/contact.php",
                 data: $("#contact-form").serialize(),
@@ -1615,6 +1657,8 @@ $(document).ready(function () {
 
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
+                        document.getElementById('michis').selectedIndex = 0;
+                        document.getElementById('contact-us-button').disabled = true;
                     });
                     $("#success-contact-form").html(result);
                     $("#success-contact-form").fadeIn("slow");
@@ -1625,6 +1669,7 @@ $(document).ready(function () {
     });
     function ValidationContactForm() {
         var error = true;
+        var michis = parseInt(document.getElementById('michis').selectedIndex); // gets the items lenght of the select list
         $('#contact-form input[type=text]').each(function (index) {
             if (index == 0) {
                 if ($(this).val() == null || $(this).val() == "") {
@@ -1643,6 +1688,11 @@ $(document).ready(function () {
             }
 
         });
+        if (michis < 1)
+        {
+            const element = document.querySelector('#michis');
+        element.classList.add('required-error');
+        }
         return error;
     }
 

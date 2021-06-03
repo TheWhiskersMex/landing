@@ -22,19 +22,21 @@ class Registry
 
         try
         {
+            // Init a new conection
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+            $pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); //Error Handling
         }
         catch (\Throwable $th)
         {
-            echo "Error de conexion";
-            return false;
+            // echo "Error de conexion";
+            return 1;
         }
 
         $pdo->beginTransaction();
 
         try
         {
-            $pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+            // Creates a new table if does not exists
             $sql ="CREATE TABLE IF NOT EXISTS $table(
                 ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR( 250 ) NOT NULL,
@@ -45,27 +47,37 @@ class Registry
         }
         catch (\Throwable $th)
         {
-            echo "Tabla no pudo crearse";
-            return false;
+            // echo "Tabla no pudo crearse";
+            return 1;
         }
 
-        $stmt = $pdo->prepare("INSERT INTO $table (name, email, michis) VALUES (:name, :email, :michis)");
+        // Executes a query to verify if an email already exists in db
+        $stmt = $pdo->prepare("SELECT * FROM $table WHERE email=:mail");
+        $stmt->bindParam(":mail", $email);
+        $stmt->execute();
         
+        if ($query = $stmt->fetch())
+        {
+            return 2;
+        }
+
+        // Inserts a new registry (ROW)
+        $stmt = $pdo->prepare("INSERT INTO $table (name, email, michis) VALUES (:name, :email, :michis)");
         $stmt->bindParam(":name",       $name);
         $stmt->bindParam(":email",      $email);
         $stmt->bindParam(":michis",     $michis);
         
         if ($stmt->execute())
         {
-            echo "Datos guardados correctamente";
+            //echo "Datos guardados correctamente";
         }
         else
         {
-            echo "Oh no, hubo algun error";
-            return false;
+            //echo "Oh no, hubo algun error";
+            return 1;
         }
         $pdo->commit();
-        return true;
+        return 0;
     }
 }
 

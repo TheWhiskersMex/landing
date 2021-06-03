@@ -409,6 +409,55 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .absolute-middle-center {left: 50%; top: 50%; position: absolute; -ms-transform: translateX(-50%) translateY(-50%); -moz-transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); -o-transform: translateX(-50%) translateY(-50%); }
 .absolute-bottom-center {left: 50%; top: 80%; position: absolute; -ms-transform: translateX(-50%) translateY(-80%); -moz-transform: translateX(-50%) translateY(-80%); -webkit-transform: translateX(-50%) translateY(-80%); transform: translateX(-50%) translateY(-80%); -o-transform: translateX(-50%) translateY(-80%); }
 
+/* 
+ 
+    Modal PopUps
+*/
+
+/* Modal Content/Box */
+
+.popup-modal-content
+{
+	padding: 10px 0px 10px 0px;
+	background-color: rgb(255,255,255);
+	background-color: rgba(255,255,255,1.0);
+	text-align: center;
+	margin: 8% auto 5% auto;
+    /* border: 2px solid  rgba(191, 126, 61, 0.50); */
+	width: 350px; /* Could be more or less, depending on screen size */
+   -webkit-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.25), inset 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+   -moz-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.25), inset 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+	box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.25), inset 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.modal
+{
+        border: 0px solid  rgba(0,0,0,0.20);
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 16384; /* Sit on top */
+	left: 0px;
+	top: 0px;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow-y: auto; /* Enable scroll if needed */
+        overflow-x: hidden;
+	background-color: rgb(255,255,255);
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 0px;
+	
+       -webkit-overflow-scrolling: touch;
+       -moz-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+	
+       -webkit-background-clip: padding-box;
+       -moz-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
 /* ===================================
     Button
 ====================================== */
@@ -441,8 +490,26 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .btn.btn-c-1 {background: #aeb799; border-color: #aeb799; color: #fff}
 .btn.btn-c-1:hover, .btn.btn-c-1:focus {background: transparent; color: #232323}
 
-.btn.btn-c-2 {background: #8da2bd; border-color: #8da2bd; color: #fff}
-.btn.btn-c-2:hover, .btn.btn-c-2:focus {background: transparent; color: #b9c7d8}
+
+/* Submit button */
+.btn.btn-c-2:disabled:hover, .btn.btn-c-2:disabled:focus 
+{
+    background: #949CA1; border-color: #949CA1; color: #fff;
+    pointer-events: none;
+}
+.btn.btn-c-2:disabled
+{
+    background: #949CA1; border-color: #949CA1; color: #fff;
+    pointer-events: none;
+}
+.btn.btn-c-2
+{
+    background: #8da2bd; border-color: #8da2bd; color: #fff
+}
+.btn.btn-c-2:hover, .btn.btn-c-2:focus
+{
+    background: transparent; color: #b9c7d8
+}
 
 /* button transparent */
 .btn.btn-transparent-white {background: transparent; border-color: #ffffff; color: #ffffff}
