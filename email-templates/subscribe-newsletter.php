@@ -11,28 +11,42 @@ class MailTo
         $message = '
         <html>
         <head>
+        <!-- Google Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
         <style>
-        
+        @font-face
+        {
+        font-family:"LibelSuit-Regular";
+        font-display: swap;
+        font-style: normal;
+        font-weight: 300;
+        src:url(https://thewhiskers.club/fonts/libelsuit.eot) format("eot"),
+        url(https://thewhiskers.club/fonts/libelsuit.woff) format("woff"),
+        url(https://thewhiskers.club/fonts/libelsuit.ttf) format("truetype"),
+        url(https://thewhiskers.club/fonts/libelsuit.svg#LibelSuit-Regular) format("svg");
+        }
         body
         {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: auto;
-            font-size: 12px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: auto;
+        font-size: 12px;
         }
         
         #Contenedor
         {
-            background: #f4f4f4;
-            overflow: hidden;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto 0 auto;
+        background: #f4f4f4;
+        overflow: hidden;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto 0 auto;
         }
         
         #Header
         {
+        font-family: "Source Sans Pro";
         font-size: 18px;
         text-align: center;
         height: 310px;
@@ -41,11 +55,12 @@ class MailTo
         
         #Contenido
         {
+        font-family: "Source Sans Pro";
         position: relative;
         background: #ffffff;
         font-size: 14px;
         padding: 5px;
-        height: 330px;
+        height: 306px;
         margin-left: 25px;
         margin-right: 25px;
         margin-top: 10px;
@@ -55,16 +70,17 @@ class MailTo
         }
         
         #Preguntas{
-        height: 180px;
+        font-family: "Source Sans Pro";
+        font-size: 12px;
+        height: 130px;
         position: relative;
         text-align:center;
         background: #ffffff;
         border-radius: 5px;
         padding: 10px;
-        font-size: 10px;
         margin-left: 50px;
         margin-right: 50px;
-        margin-top: 200px;
+        margin-top: 180px;
         -webkit-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
         -moz-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
         box-shadow: 0px 6px 15px 2px rgba(0,0,0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
@@ -72,6 +88,8 @@ class MailTo
         }
         
         #Slogan{
+        font-family: "Source Sans Pro";
+        font-weight:bold;
         margin-top: 20px;
         font-size: 18px;
         text-align: center;
@@ -80,6 +98,7 @@ class MailTo
         }
         
         #Equipo{
+        font-family: "Source Sans Pro";
         margin-top: 5px;
         text-align: center;
         margin-left: 25px;
@@ -91,7 +110,7 @@ class MailTo
         height: 50px;
         background: #b8c6d8;
         font-size: 10px;
-        font-family: Source Sans Pro-Light 300/Semi-bold 600;
+        font-family: "Source Sans Pro";
         left: 0;
         bottom: 0;
         line-height: 50px;
@@ -99,8 +118,17 @@ class MailTo
         
         #Fecha
         {
+        font-family:"LibelSuit-Regular";
+        font-size: 18px;
         margin-top: 0px;
         text-align: right;
+        }
+        #nombre
+        {
+        font-family:"LibelSuit-Regular";
+        font-size: 24px;
+        margin-top: 0px;
+        text-align: center;
         }
         
         #Contenido1{
@@ -108,15 +136,15 @@ class MailTo
         text-align: center;
         font-size: 18px;
         box-sizing: border-box;
-        font-family: LibelSuit-Regular;
+        font-family: "Source Sans Pro";
         }
         
         #Contenido2{
+        font-family: "Source Sans Pro";
+        font-size: 12px;
         margin-top: 0px;
         text-align: left;
-        font-size: 10px;
         box-sizing: border-box;
-        font-family: Source Pro-Light 300/Semi-bold 600;
         margin-left: 10px;
         }
         
@@ -125,10 +153,10 @@ class MailTo
         }
         #tex-info
         {
-        font-family: Source Sans Pro-Light 300/Semi-bold 600;
+        font-family: "Source Sans Pro";
         text-align: justify;
         text-justify: inter-word;
-        font-size: 10px;
+        font-size: 12px;
         box-sizing: border-box;
         }
         
@@ -160,11 +188,13 @@ class MailTo
         <br>
         <img src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Logo_Mailing.png">
         <br><br>
-        <b style="font-size: 24px;">'.$name.'</b>
+        <div id="nombre">
+        <b>'.$name.'</b>
+        </div>
         <div id="Contenido">
         
             <div id="Fecha">
-            <b style="font-size: 12px;">'.$date.'</b>
+            <b>'.$date.'</b>
             </div>
             <div id="Contenido1">
             <a>
@@ -198,11 +228,7 @@ class MailTo
             </div>
             <!-- </Contenido3> -->
             </div>
-            
-        
         </div>
-        
-        
         
         <div id="Preguntas">
         <p>¿Te divierte llenar de <b>pelitos la ropa obscura de tu dueño?</b>
@@ -228,12 +254,10 @@ class MailTo
             </div>
             <div id="RedSocial">
             <a style="font-family: LibelSuit-Regular; color: #444038;">
-            Síguenos por <a href="https://www.thewhiskers.club"><img src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Icono_Facebook.png"/></a>
+            Síguenos por <a href="https://www.facebook.com/thewhiskersclub"><img src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Icono_Facebook.png"/></a>
             </a>
             </div>
             </div>
-    
-        
     
         <footer style="text-align: center; height: 50px; background: #b8c6d8; font-size: 10px; font-family: Source Sans Pro-Light 300/Semi-bold 600; left: 0; bottom: 0; line-height: 50px;">
         The whiskers México, 2021

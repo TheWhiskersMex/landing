@@ -51,13 +51,14 @@
             h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
             h._hjSettings = { hjid: 2320264, hjsv: 6 };
             a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script'); r.async = 1;
+            r = o.createElement('script');
+            r.async = 1;
             r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
 
-    <!-- Google Fonts CDN -->
+    <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
 
@@ -93,8 +94,8 @@
                                                 <input type="text" name="name" id="name" onkeyup="" placeholder="Tú nombre de esclavo es" class="border-radius-4 bg-white medium-input">
                                                 <input type="text" name="email" id="email" onkeyup="" placeholder="Correo" class="border-radius-4 bg-white medium-input">
 
-                                                <select name="michis" id="michis" onchange="" class="border-radius-4 bg-white medium-input " style="color:#444038;">
-                                                    <option value="" disabled selected hidden>¿Cuántos michis tienes?</option>
+                                                <select name="michis" id="michis" class="border-radius-4 bg-white medium-input">
+                                                    <option value="" selected disabled hidden>¿Cuántos michis tienes?</option>
                                                     <option value="1">&#128008;</option>
                                                     <option value="2">&#128008; &#128008;</option>
                                                     <option value="3">&#128008; &#128008; &#128008;</option>
@@ -201,50 +202,46 @@
     <!-- setting -->
     <script type="text/javascript" src="js/main.js"></script>
 
+    <!-- Popup successfull registered -->
     <div id="mensaje-correcto" class="modal">
         <div class="popup-modal-content" style="border: 3px solid  rgba(173, 182, 151, 0.50);">
             <div id="cerrar" style="text-align: end;">
-                <a style="color: #ADB697;; font-size: 15px; margin-right: 10px;" href="javascript:cerrar()">X</a>
+                <a style="color: #ADB697; font-size: 15px; margin-right: 10px;" href="javascript:cerrar()">X</a>
             </div>
-            <img src="./assets/michis/Correcto.png" width="128px">
+            <img src="./assets/michis/Correcto.png" width="128">
             <div style="margin-left: 15px; margin-right: 15px; font-family: 'Source Sans Pro', sans-serif;">
                 <h3 style="color:#ADB697;">¡Purrrrfecto!</h3>
-                <b>Te tenemos en la mira esclavo. Registramos a la purrrrfección tu información</b>
+                <b>Te tenemos en la mira esclav@. Registramos a la purrrrfección tu información</b>
                 <p>Espera pronto más noticias.</p>
             </div>
         </div>
     </div>
 
+    <!-- Popup duplicated email address -->
     <div id="correo-duplicado" class="modal">
         <div class="popup-modal-content" style="border: 3px solid  rgba(191, 126, 61, 0.50);">
             <div id="cerrar" style="text-align: end;">
                 <a style="color: #BF7E3D; font-size: 15px; margin-right: 10px;" href="javascript:cerrar()">X</a>
             </div>
-            <img src="./assets/michis/Revisar.png" width="128px">
+            <img src="./assets/michis/Revisar.png" width="128">
             <div style="margin-left: 15px; margin-right: 15px; font-family: 'Source Sans Pro', sans-serif;">
                 <h3 style="color: #BF7E3D;">¡Ps, ps!</h3>
-                <b>
-                    El esclavo o la Karen que quieres registrar ya existe en nuestra gatera.
-                    <p>Intenta con un nuevo correo.</p>
-                </b>
+                <b>El esclavo o la Karen que quieres registrar ya existe en nuestra gatera.</b>
+                <p><b>Intenta con un nuevo correo.</b></p>
             </div>
         </div>
     </div>
-
-    <
-
+    <!-- Popup fail user register -->
     <div id="mensaje-incorrecto" class="modal">
         <div class="popup-modal-content" style="border: 3px solid  rgba(213, 117, 117, 0.50);">
             <div id="cerrar" style="text-align: end;">
                 <a style="color: #D57575; font-size: 15px; margin-right: 10px;" href="javascript:cerrar()">X</a>
             </div>
-            <img src="./assets/michis/Incorrecto.png" width="128px">
+            <img src="./assets/michis/Incorrecto.png" width="128">
             <div style="margin-left: 15px; margin-right: 15px; font-family: 'Source Sans Pro', sans-serif;">
                 <h3 style="color: #D57575;">¡Meeow!</h3>
-                <b>
-                    Estamos mordiendo los cables en este preciso momento.
-                    <p>Intenta registrarte mas tarde.</p>
-                </b>
+                <b>Estamos mordiendo los cables en este preciso momento.</b>
+                <p><b>Intenta registrarte mas tarde.</b></p>
             </div>
         </div>
     </div>
@@ -256,7 +253,7 @@
 
             //document.getElementById("mensaje-correcto").style.display="block";
             //document.getElementById("correo-duplicado").style.display="block";
-            //document.getElementById("mensaje-incorrecto").style.display="block";
+            //document.getElementById("mensaje-incorrecto").style.display = "block";
 
         }
 
@@ -266,6 +263,5 @@
             document.getElementById("mensaje-incorrecto").style.display = "none";
         }
     </script>
-
 </body>
 </html>

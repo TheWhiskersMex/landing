@@ -7,11 +7,11 @@ include_once '../slack/slack.php';
 $emails = new MailTo();
 $registry = new Registry();
 
-  if(isset($_POST['email'])){
-	  
-	$name =$_POST["name"];
-	$from =$_POST["email"];
-	$michis=$_POST["michis"];
+  if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['michis']))
+  {
+    $name   = $_POST["name"];
+    $from   = $_POST["email"];
+    $michis = $_POST["michis"];
 	// $comment=$_POST["comment"];
 
 	$reg = $registry->regnewMichi($name, $from, $michis);
@@ -20,9 +20,7 @@ $registry = new Registry();
       echo '
       <script type="text/JavaScript">
       document.getElementById("correo-duplicado").style.display="block";
-      </script>';
-    //$emails->sendConfMail($from, $name, $michis);
-    //echo "Oh oh! Este correo ya se encuentra registrado.";
+      </script>'; // Shows the duplicated user Popup
     return;
     }
     else if ($reg == 1)
@@ -30,7 +28,7 @@ $registry = new Registry();
       echo '
       <script type="text/JavaScript">
       document.getElementById("mensaje-incorrecto").style.display="block";
-      </script>';
+      </script>'; // Shows the unsuccessfull message Popup
       return;
     }
     else
@@ -38,10 +36,10 @@ $registry = new Registry();
       echo '
       <script type="text/JavaScript">
       document.getElementById("mensaje-correcto").style.display="block";
-      </script>';
-
-    $emails->sendConfMail($from, $name, $michis);
-    
+      </script>'; // Shows the successfull message Popup
+      
+      $emails->sendConfMail($from, $name, $michis); // Sends confirmation email
+  
 	// Email Receiver Address
 	$receiver="elmichi@thewhiskers.club";
 	$subject="Nuevo suscriptor";
@@ -95,7 +93,7 @@ $registry = new Registry();
    }
    
    // Post to webhook stored in access object
-   $hook = 'https://hooks.slack.com/services/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';
+   $hook = 'https://hooks.slack.com/services/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';
    $slack = new Slack($hook);
    $slack->setDefaultUsername("SlackBot");
    $slack->setDefaultChannel("#nuevos-registros");
