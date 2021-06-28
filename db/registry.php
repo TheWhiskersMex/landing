@@ -3,18 +3,12 @@ class Registry
 {
 	public function regnewMichi($name, $email, $michis)
 	{
-        $host     = 'us-cdbr-east-03.cleardb.com';
-        $dbname   = 'heroku_d221bd92a1ad106';
-        $user     = 'ba1a22ee47652d';
-        $password = '5fb27cdd';
-        $port     = 3306;
-        $table    = 'kittysdb';
-        $pdo      = null;
-
+        include_once("./config/config.php");
+        $pdo = null;
         try
         {
             // Init a new connection
-            $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $user, $password);
+            $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
             $pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); //Error Handling
             $pdo->setAttribute( PDO::ATTR_AUTOCOMMIT, true);
         }
@@ -37,7 +31,6 @@ class Registry
             $origin = $_SERVER['REMOTE_ADDR']; // HTTP Client's Public IP
             echo($origin);
         }
-
         $pdo->beginTransaction();
 
         $sql = "CREATE TABLE IF NOT EXISTS $table(
@@ -56,9 +49,8 @@ class Registry
             // Unable to create the new table
             return 1;
         }
-
         // Executes a query to verify if an email already exists in db
-        $stmt = $pdo->prepare("SELECT * FROM $table WHERE email=:email");
+        $stmt = $pdo->prepare("SELECT * FROM $table WHERE emai=:email");
         try
         {
             $stmt->bindParam(":email", $email);
@@ -78,7 +70,6 @@ class Registry
             // The email address is already in the table
             return 2;
         }
-
         // Inserts a new registry
         unset($stmt); // Destroy the previous value
         $stmt = $pdo->prepare("INSERT INTO $table (name, email, michis) VALUES (:name, :email, :michis)");
@@ -106,5 +97,4 @@ class Registry
         return 0; //
     }
 }
-
 ?>

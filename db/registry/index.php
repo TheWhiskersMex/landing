@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -53,7 +53,7 @@ label {
 
 <body>
 <div class="main-wrapper">
-<table style="max-width=50px">
+<table style="max-width:50px">
 	<tr style="background-color: #6E564D; color: white;">
 		<th width="10%" height="20">
 		<img src="https://www.thewhiskers.club/images/logo-2x.png" alt="Whisker" />
@@ -62,8 +62,8 @@ label {
 		<h3>Database</h3>
 		</th>
 		<th width="15%" height="20">
-                <form action="download.php" method="POST">
-		<input style="float: right; margin-right: 20px;" type="submit" name="download" value="Export to XML" name="submit" class="btn btn-primary">
+        <form action="download.php" method="POST">
+		<input style="float: right; margin-right: 20px;" type="submit" name="download" value="Export to XML" class="btn btn-primary">
 		</form>
                 </th>
 	</tr>
@@ -72,10 +72,11 @@ label {
 	<thead>
 		<tr style="background-color:#D9D9D9">
 			<th width="1%">
-			<label class="control control--checkbox">
-					<input type="checkbox" class="js-check-all"/>
-					<div class="control__indicator"></div>
-				</th>
+            <label class="control control--checkbox">
+            <input type="checkbox" class="js-check-all" />
+            </label>
+			<div class="control__indicator"></div>
+			</th>
 			<th width="5%"><strong>ID</strong></th>
 			<th width="15%"><strong>Nombre</strong></th>
 			<th width="15%"><strong>E-Mail</strong></th>
@@ -84,18 +85,18 @@ label {
 		</tr>
 	</thead>
 	<tbody>
-	<?php
+        <?php
 		include("function.php");
-		$sql = "SELECT * FROM kittysdb ORDER BY name";
-		$resultado = db_query($sql);
-		while($row = mysqli_fetch_object($resultado)){
-		?>
+		while($row = queryAll($table))
+		{
+        ?>
             <tr>
               <th scope="row" style="background-color:#fff;">
-                <label class="control control--checkbox">
-                  <input type="checkbox"/>
+                  <label class="control control--checkbox">
+                      <input type="checkbox" />
+                  </label>
                   <div class="control__indicator"></div>
-                </label>
+                
               </th>
 			<td><?php echo $row->ID;?></td>
 			<td><?php echo $row->name;?></td>

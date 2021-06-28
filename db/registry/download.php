@@ -14,7 +14,7 @@ if(@$_POST['download'])
     $xmlRoot = $domtree->createElement('xml');
     /* append it to the document created */
     $xmlRoot = $domtree->appendChild($xmlRoot);
-
+    
     while ($row = mysqli_fetch_object($query))
     {
         $user = $domtree->createElement('usuario');
@@ -25,7 +25,7 @@ if(@$_POST['download'])
         $user->appendChild($domtree->createElement('michis',   $row->michis));
         $user->appendChild($domtree->createElement('fecha',    $row->date));
     }
-    $domtree->save($file);
+    @$domtree->save($file);
 
     // Define header information
     header('Content-Description: File Transfer');
@@ -39,6 +39,6 @@ if(@$_POST['download'])
     // Clear system output buffer
     flush();
     // Read the size of the file
-    readfile($file);
+    @readfile($file);
 }
 ?>

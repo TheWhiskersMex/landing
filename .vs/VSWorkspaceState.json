@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\css"
+    "\\db",
+    "\\db\\registry",
+    "\\email-templates"
   ],
-  "SelectedNode": "\\css\\style.css",
+  "SelectedNode": "\\db\\registry\\download.php",
   "PreviewInSolutionExplorer": false
 }

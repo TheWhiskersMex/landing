@@ -426,9 +426,7 @@ font-style:normal;
 /* 
 Placeholder Text color
  */
- input[type="text"]:disabled {
-    color: grey;
-}
+ input[type=text]:disabled { color: grey; }
 /*
 Changes the color of the Select disabled option
 of the Dropdown list
