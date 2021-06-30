@@ -1,20 +1,23 @@
 <?php
 session_start();
+define('ROOT', '/');
+
 if (isset($_SERVER['REQUEST_URI']))
 {
     switch ($_SERVER['REQUEST_URI'])
     {
-        case '/landing/registro/index.php':
+        case ROOT . 'registro/index.php':
             break;
 
-        case '/landing/registro/':
+        case ROOT . 'registro/':
             //switch(@$_SESSION['status'])
             //{
             //    case 'complete':
             //        header('location: correo.php');
             //        break;
             //    case 'registered':
-            //        header('location: verificacion.php');
+            //  }
+            //      header('location: verificacion.php');
             //        break;
             //    case 'verified':
             //        header('location: completo.php');
@@ -26,23 +29,23 @@ if (isset($_SERVER['REQUEST_URI']))
             header('location: registro.php');
             break;
 
-        case '/landing/registro/correo.php':
-            if (!(@$_SESSION['status'] === "complete"))
-            header('location: index.php');
+        case ROOT . 'registro/correo.php':
+            if (!(@$_SESSION['status'] === 'complete'))
+            header('location: registro.php');
             break;
 
-        case '/landing/registro/verificacion.php':
+        case ROOT . 'registro/verificacion.php':
             if (!(@$_SESSION['status'] === 'registered'))
-            header('location: index.php');
+            header('location: registro.php');
             break;
 
-        case '/landing/registro/completo.php':
+        case ROOT . 'registro/completo.php':
             if (!(@$_SESSION['status'] === 'verified'))
-            header('location: index.php');
+            header('location: registro.php');
             $_SESSION['status'] = "loggedin";
             break;
 
-        case '/landing/registro/profile.php':
+        case ROOT . 'registro/profile.php':
             if (!(@$_SESSION['status'] === "loggedin"))
                 header('location: registro.php');
             break;

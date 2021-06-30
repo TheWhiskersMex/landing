@@ -4,12 +4,13 @@ class MailTo
     public function send($codigo, $receiver)
     {
         $from ="elmichi@thewhiskers.club";
-        $subject="Verificacion de Cuenta";
+        $subject="Verificaci贸n de Cuenta";
         $message = '
         <!doctype html>
         <html>
         <head>
-        <title>HTML email</title>
+        <meta charset="UTF-8">
+        <title>Verificaci贸n de Cuenta</title>
         <style>
         footer
         {
@@ -37,16 +38,16 @@ class MailTo
         <tr>
         <td colspan="2" align="center" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;">
         <h2>
-        Confirme su correo electr髇ico
+        Confirme su correo electr贸nico
         </h2>
         <p>
-        Acaba de crear una cuenta en <span style="font-weight: bold;"><a href="http://www.thewhiskers.club">The Whiskers</a></span>. Confirme su direcci髇 de correo electr髇ico para informarnos que usted es el propietario leg韙imo de esta cuenta.
+        Acaba de crear una cuenta en <span style="font-weight: bold;"><a href="http://www.thewhiskers.club">The Whiskers</a></span>. Confirme su direcci锟絥 de correo electr锟絥ico para informarnos que usted es el propietario leg锟絫imo de esta cuenta.
         </p>
         </td>
         </tr>
         <tr>
         <td colspan="2" align="center" valign="top" style="border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;">
-        <b style="font-size: 16px;">Codigo</b>
+        <b style="font-size: 16px;">C贸digo</b>
         </td>
         </tr>
         <tr>
@@ -56,7 +57,7 @@ class MailTo
         </tr>
         </table>
         <footer>
-        The whiskers M閤ico, 2021
+        The whiskers M茅xico, 2021
         </footer>
         </body>
         </html>

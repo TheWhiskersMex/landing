@@ -49,6 +49,10 @@
             padding: 0;
             margin: 0;
         }
+        .text-box
+        {
+            text-transform: uppuppercase;
+        }
 
         #verificacion{
             background-color: #fdfdfd;
@@ -96,13 +100,13 @@
             <p>Ingresa el código que aparece en el correo electronico</p>
             <form id="verification-form" method="POST">
                 <label>Confirma que esta dirección de correo electrónico te pertenece</label><br>
-                <input type="text" minlength="1" maxlength="1" id="input-box-1" style="width: 10%; text-align: center" placeholder="-">
-                <input type="text" minlength="1" maxlength="1" id="input-box-2" style="width: 10%; text-align: center" placeholder="-">
-                <input type="text" minlength="1" maxlength="1" id="input-box-3" style="width: 10%; text-align: center" placeholder="-">
-                <input type="text" minlength="1" maxlength="1" id="input-box-4" style="width: 10%; text-align: center" placeholder="-">
-                <input type="text" minlength="1" maxlength="1" id="input-box-5" style="width: 10%; text-align: center" placeholder="-">
-                <input type="text" minlength="1" maxlength="1" id="input-box-6" style="width: 10%; text-align: center" placeholder="-">
-                <p><a id="renew-code" href="#">Reenviar código</a></p>
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-1" style="width: 10%; text-align: center" placeholder="-">
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-2" style="width: 10%; text-align: center" placeholder="-">
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-3" style="width: 10%; text-align: center" placeholder="-">
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-4" style="width: 10%; text-align: center" placeholder="-">
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-5" style="width: 10%; text-align: center" placeholder="-">
+                <input type="text" minlength="1" maxlength="1" class="text-box" id="input-box-6" style="width: 10%; text-align: center" placeholder="-">
+                <p><a id="resend-code" href="#">Reenviar código</a></p>
                 <div>
                 <input type="button" id="verify-button" value="Siguiente" style="width: 40%; height: 6vh; background-color:#AF9898; border-color: #AF9898; color: white; min-height: 40px;">
                 </div>

@@ -13,16 +13,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     -->
+    -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script src="./js/hello.all.js"></script>
     <script src="../js/jquery.js"></script>
-
+    
     <style>
-        @media screen and (max-width: 800px) {
-         #Contenedor{
-                         width:100%;
-                         }
+        @media screen and (max-width: 800px)
+        {
+        #Contenedor
+        {
+        width:100%;
+        }
         }
         @media screen and (max-device-width : 480px) {
 
@@ -71,20 +73,18 @@
 
     </style>
 </head>
-
 <body>
-    <div id="mensajecorrecto">
-        <div id="cerrar" style="text-align: end; margin-top: 2%; margin-right: 2%;"> <a href="javascript:cerrar()"><img src="Assets\cancelar.png" width="50vw" height="50vw"></a></div> 
-        <div id="logo">
-        <img src="img\TheWhiskers L.png" width="240vh" height="65vh">
-        </div>
-        <div id="mensaje" style="text-align: center; margin-top: 5%; margin-bottom: 5%;">
-        Su registro se realizo<br> correctamente
-        </div>
-        <div id="imagen">
-        <img src="img\pexels-anna-shvets-3846135.jpg" style="width: 90%; height: 90%; margin-left: 5%; margin-bottom: 5%; ">
-        </div>
-        </div>
+<div id="mensajecorrecto">
+    <div id="cerrar" style="text-align: end; margin-top: 2%; margin-right: 2%;"> <a href="javascript:cerrar()"><img src="Assets\cancelar.png" width="50vw" height="50vw"></a></div> 
+    <div id="logo">
+    <img src="img\TheWhiskers L.png" width="240vh" height="65vh">
+    </div>
+    <div id="mensaje" style="text-align: center; margin-top: 5%; margin-bottom: 5%;">
+    Su registro se realizo<br> correctamente
+    </div>
+    <div id="imagen">
+    <img src="img\pexels-anna-shvets-3846135.jpg" style="width: 90%; height: 90%; margin-left: 5%; margin-bottom: 5%; ">
+    </div>
+</div>
 </body>
-
 </html>

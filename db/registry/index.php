@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>The Whiskers DB</title>
-<link type="text/css" href="./bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="../../css/bootstrap.min.css" rel="stylesheet">
+<script src="../../js/jquery.js"></script>
+<script src="./checktable.js"></script>
+
 <style>
 body
 {
@@ -44,32 +47,29 @@ label {
   position: relative;
   margin-bottom: 5px;
   cursor: pointer;
-  font-size: 18px; }
-
-
-
+  font-size: 18px; 
+  }
 </style>
 </head>
 
 <body>
 <div class="main-wrapper">
-<table style="max-width:50px">
-	<tr style="background-color: #6E564D; color: white;">
-		<th width="10%" height="20">
+<table class="table">
+	<thead>
+		<tr style="background-color: #6E564D; color: white;">
+		<th colspan="2" width="30%" style="border: none;">
 		<img src="https://www.thewhiskers.club/images/logo-2x.png" alt="Whisker" />
 		</th>
-		<th style="text-align: center;";  width="15%" height="20">
+		<th colspan="3" style="text-align: center;";  width="auto" style="border: none;">
 		<h3>Database</h3>
 		</th>
-		<th width="15%" height="20">
+		<th width="auto" style="border: none;">
         <form action="download.php" method="POST">
 		<input style="float: right; margin-right: 20px;" type="submit" name="download" value="Export to XML" class="btn btn-primary">
 		</form>
-                </th>
+	    </th>
 	</tr>
-</table>
-<table class="table table-bordered">
-	<thead>
+
 		<tr style="background-color:#D9D9D9">
 			<th width="1%">
             <label class="control control--checkbox">
@@ -86,7 +86,8 @@ label {
 	</thead>
 	<tbody>
         <?php
-		include("function.php");
+		include("../config/config.php");
+		include("./function.php");
 		while($row = queryAll($table))
 		{
         ?>
@@ -109,7 +110,5 @@ label {
         
 </table>
 </div>
-<script src="./jquery.js"></script>
-<script src="./checktable.js"></script>
 </body>
 </html>

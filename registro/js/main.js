@@ -1,8 +1,8 @@
 hello.init(
 {
-	facebook: 'FACEBOOK_CLIENT_ID',
-	google: '553742850908-b6voliqfpt6as2m8j8fogqs41cqe8b97.apps.googleusercontent.com'
-}, {redirect_uri: 'http://localhost/goauth'});
+	facebook: '497024374838759',
+	google: '765741832465-gcsp9otgc0a2g4gn49pa4u1fdbsr5mal.apps.googleusercontent.com'
+}, {redirect_uri: 'https://thewhiskers.club/perfil'});
 
 hello.on('auth.login', function(auth)
 {
@@ -11,7 +11,6 @@ hello.on('auth.login', function(auth)
     {
 	});
 });
-
 
 $(document).on("click", '#logout', function ()
 {
@@ -57,11 +56,18 @@ function initOAuth(network, force = false)
         // p.thumbnail
         // p.id
         $.ajax({ type: 'POST',
-            url: 'completo.php',
-            data: { network: network, firstname: p.first_name, lastname: p.last_name, email: p.email, thumbnail: p.thumbnail },
+            url: 'userdata.php',
+            data: {
+                method: 'oauth',
+                network: network,
+                firstname: p.first_name,
+                lastname: p.last_name,
+                email: p.email,
+                thumbnail: p.thumbnail
+            },
             success: function (result)
             {
-                window.location.href="completo.php";
+                $("#email-in-use").html(result);
             }
         });
     }).then(null, function(e)
@@ -158,6 +164,8 @@ $(document).on("click", "#next-button", function ()
             success: function (result)
             {
                 $('#script').html(result);
+                // $("#script").fadeIn("slow");
+                // $('#script').delay(3000).fadeOut("slow");
             }
         });
     }
@@ -177,6 +185,39 @@ $(document).on("click", "#registry-button", function ()
                 $("#email-in-use").html(result);
                 $("#email-in-use").fadeIn("slow");
                 $('#email-in-use').delay(3000).fadeOut("slow");
+            }
+        });
+    }
+});
+
+$('#resend-code').on("click", function () {
+    $.ajax({
+        type: "POST",
+        url: "userdata.php",
+        data: { code: "C0D1G0" },
+        success: function (result)
+        {
+            $('#script').html(result);
+            // $("#script").fadeIn("slow");
+            // $('#script').delay(3000).fadeOut("slow");
+        }
+    }); 
+});
+
+$(document).on("click", "#verify-button", function ()
+{
+    var otpcode = getOtpCode();
+    if (otpcode.length == 6)
+    {
+        $.ajax({
+            type: "POST",
+            url: "userdata.php",
+            data: { otpcode: otpcode },
+            success: function (result)
+            {
+                $('#script').html(result);
+                // $("#script").fadeIn("slow");
+                // $('#script').delay(3000).fadeOut("slow");
             }
         });
     }
@@ -233,35 +274,6 @@ function getOtpCode()
         $("#input-box-6").val() + "";;
     return "";
 }
-
-$('#renew-code').on("click", function () {
-    $.ajax({
-        type: "POST",
-        url: "userdata.php",
-        data: { newotpcode: "N3WC0D" },
-        success: function (result)
-        {
-            $('#script').html(result);
-        }
-    });
-});
-
-$(document).on("click", "#verify-button", function ()
-{
-    var otpcode = getOtpCode();
-    if (otpcode.length == 6)
-    {
-        $.ajax({
-            type: "POST",
-            url: "userdata.php",
-            data: { otpcode: otpcode },
-            success: function (result)
-            {
-                $('#script').html(result);
-            }
-        });
-    }
-});
 
 function ValidationContactForm()
 {

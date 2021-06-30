@@ -1,5 +1,4 @@
 <?php
-require_once('config.php');
 function db_query($query)
 {
     global $host; global $username; global $password; global $dbname; global $port;

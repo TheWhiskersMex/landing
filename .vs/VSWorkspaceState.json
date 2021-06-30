@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\db",
-    "\\db\\registry",
-    "\\email-templates"
+    "\\email-templates",
+    "\\registro",
+    "\\registro\\js"
   ],
-  "SelectedNode": "\\db\\registry\\download.php",
+  "SelectedNode": "\\registro\\userdata.php",
   "PreviewInSolutionExplorer": false
 }
