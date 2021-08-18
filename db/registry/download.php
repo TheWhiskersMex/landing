@@ -1,11 +1,11 @@
 <?php
 if(@$_POST['download'])
 {
-    include('function.php');
-    $sql = 'SELECT * FROM kittysdb ORDER BY date';
-    $query = db_query($sql);
-
+    require_once('../config/config.php');
+    require_once('function.php');
+    $rows = queryAll($table, 'ORDER BY date');
     $file = './database.xml';
+
     /* create a dom document with encoding utf8 */
     $domtree = new DOMDocument('1.0', 'UTF-8');
     $domtree->preserveWhiteSpace = false;
@@ -15,7 +15,7 @@ if(@$_POST['download'])
     /* append it to the document created */
     $xmlRoot = $domtree->appendChild($xmlRoot);
     
-    while ($row = mysqli_fetch_object($query))
+    while ($row = mysqli_fetch_object($rows))
     {
         $user = $domtree->createElement('usuario');
         $user = $xmlRoot->appendChild($user);

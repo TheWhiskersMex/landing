@@ -4,266 +4,132 @@ class MailTo
 	public function sendConfMail($email, $name, $michis)
     {
         $from     = "elmichi@thewhiskers.club";
-        $subject  = "Gracias!";
+        $subject  = "😸 Bienvenido a The Whiskers.";
         $receiver = $email;
         $date = date('Y-m-d');
         
+        /**
+         * Email Template to be send to the user
+         */
         $message = '
         <html>
         <head>
-        <!-- Google Fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
-        <style>
-        @font-face
-        {
-        font-family:"LibelSuit-Regular";
-        font-display: swap;
-        font-style: normal;
-        font-weight: 300;
-        src:url(https://thewhiskers.club/fonts/libelsuit.eot) format("eot"),
-        url(https://thewhiskers.club/fonts/libelsuit.woff) format("woff"),
-        url(https://thewhiskers.club/fonts/libelsuit.ttf) format("truetype"),
-        url(https://thewhiskers.club/fonts/libelsuit.svg#LibelSuit-Regular) format("svg");
-        }
-        body
-        {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: auto;
-        font-size: 12px;
-        }
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Template</title>
+            <link rel="stylesheet" href="https://thewhiskers.club/css/bootstrap.min.css">
+            <style>
+                @media screen and (max-width: 800px)
+                {
+                    #Contenedor
+                    {
+                        width:100%;
+                    }
+                }
+                @media screen and (max-device-width : 480px) {
         
-        #Contenedor
-        {
-        background: #f4f4f4;
-        overflow: hidden;
-        width: 100%;
-        max-width: 480px;
-        margin: 0 auto 0 auto;
-        }
+                    #sidebar{
+                        display:none;
+                        }
         
-        #Header
-        {
-        font-family: "Source Sans Pro";
-        font-size: 18px;
-        text-align: center;
-        height: 310px;
-        background: #d8d8d8;
-        }
+                            #menu{
+                        text-align:center;
+                        }
+                }
+                @media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
+                {
+                    .entry, .entry-content
+                    {
+                        font-size:1.2em;
+                        line-height:1.5em;
+                    }
+                }
         
-        #Contenido
-        {
-        font-family: "Source Sans Pro";
-        position: relative;
-        background: #ffffff;
-        font-size: 14px;
-        padding: 5px;
-        height: 306px;
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-top: 10px;
-        -webkit-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        -moz-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        box-shadow: 0px 6px 15px 2px rgba(0,0,0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        }
-        
-        #Preguntas{
-        font-family: "Source Sans Pro";
-        font-size: 12px;
-        height: 130px;
-        position: relative;
-        text-align:center;
-        background: #ffffff;
-        border-radius: 5px;
-        padding: 10px;
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-top: 180px;
-        -webkit-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        -moz-box-shadow: 0px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        box-shadow: 0px 6px 15px 2px rgba(0,0,0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-        
-        }
-        
-        #Slogan{
-        font-family: "Source Sans Pro";
-        font-weight:bold;
-        margin-top: 20px;
-        font-size: 18px;
-        text-align: center;
-        margin-left: 25px;
-        margin-right: 25px;
-        }
-        
-        #Equipo{
-        font-family: "Source Sans Pro";
-        margin-top: 5px;
-        text-align: center;
-        margin-left: 25px;
-        margin-right: 25px;
-        }
-        
-        footer{
-        text-align: center;
-        height: 50px;
-        background: #b8c6d8;
-        font-size: 10px;
-        font-family: "Source Sans Pro";
-        left: 0;
-        bottom: 0;
-        line-height: 50px;
-        }
-        
-        #Fecha
-        {
-        font-family:"LibelSuit-Regular";
-        font-size: 18px;
-        margin-top: 0px;
-        text-align: right;
-        }
-        #nombre
-        {
-        font-family:"LibelSuit-Regular";
-        font-size: 24px;
-        margin-top: 0px;
-        text-align: center;
-        }
-        
-        #Contenido1{
-        margin-top: 0px;
-        text-align: center;
-        font-size: 18px;
-        box-sizing: border-box;
-        font-family: "Source Sans Pro";
-        }
-        
-        #Contenido2{
-        font-family: "Source Sans Pro";
-        font-size: 12px;
-        margin-top: 0px;
-        text-align: left;
-        box-sizing: border-box;
-        margin-left: 10px;
-        }
-        
-        #Contenido3{
-        margin-top: 0px;
-        }
-        #tex-info
-        {
-        font-family: "Source Sans Pro";
-        text-align: justify;
-        text-justify: inter-word;
-        font-size: 12px;
-        box-sizing: border-box;
-        }
-        
-        #Frase{
-        text-align: center;
-        border-bottom: 1px solid #000000 ;
-        line-height: 50px;
-        box-sizing: border-box;
-        }
-        
-        #EqTrabajo{
-        margin-top: 0px;
-        font-size: 12px;
-        
-        }
-        
-        #RedSocial{
-        margin-top: 15px;
-        margin-bottom: 10px;
-        justify-content: center;
-        align-content: center;
-        font-size: 16px;
-        }
-        </style>
-        </head>
+                *{
+                    box-sizing: border-box;
+                }
+                body{
+                    padding: 0;
+                    margin: 0;
+                    
+                }
+                #contenedor{
+                    background: #fff;
+                    max-width: 550px;
+                    width: 100%;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    height: 100%;
+                }
+                #contenido{
+                    margin-left: 1%;
+                    margin-right: 1%;
+                    font-size: 1.3em;
+                }
+                #bienvenida{
+                    text-align: center;
+                    align-items: center;
+                }
+                #footer{
+                    background-image: url("https://thewhiskers.club/assets/mailing/bienvenida/v2/Footer.png");
+                    font-size: 1.1em;
+                    min-height: 275px;
+                }
+                #footer-c{
+                    margin-left: 1%;
+                    margin-right: 1%;
+                }
+                #texto
+                {
+                    font-family: "Source Serif Pro", serif;
+                    font-size: 1.1em;
+                    text-align: center;
+                }
+                @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap");
+                /*font-family: Dosis, sans-serif;*/
+                @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Source+Serif+Pro:wght@600&display=swap");
+                /* font-family: "Source Serif Pro", serif;*/
+                
+            </style>
         <body>
-        <div id="Contenedor">
-        <div id="Header">
-        <br>
-        <img src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Logo_Mailing.png">
-        <br><br>
-        <div id="nombre">
-        <b>'.$name.'</b>
-        </div>
-        <div id="Contenido">
-        
-            <div id="Fecha">
-            <b>'.$date.'</b>
-            </div>
-            <div id="Contenido1">
-            <a>
-            <b>¡Te damos la bienvenida!</b>
-            </a>
-            </div>
-            <div id="Contenido2">
-            <p>
-            Ya eres un esclavo más... perdón un humano más que se registra en nuestro <b>Club Social para amantes de
-            nosotros los gatos.</b>
-            </p>
-            </div>
-            <!-- <Contenido3> -->
-            <div id="Contenido3">
-            <table>
-            <tbody>
-            <tr>
-            <td>
-            <img alt="Jefe Michi" src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Imagen_Gato.png" width="128px" height="128px">
-            </td>
-            <td>
-            <div id="tex-info">
-            <p><b>The whiskers</b> será la primera Red Social para nosotros los michis en toda Latinoamérica, Meow.</p>
-            <p>Podrás subir fotos y contenido desde tu perfil, seguir a otros gatos y mucho más. ¡Yo había ponido mi posteo aquí, y ahora no ta!</p>
-            <p>Espera próximamente más noticias, ya reservamos un lugar para esa reina o rey de tu casa.</p>
-            </div>
-            </td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            <!-- </Contenido3> -->
-            </div>
-        </div>
-        
-        <div id="Preguntas">
-        <p>¿Te divierte llenar de <b>pelitos la ropa obscura de tu dueño?</b>
-        <p>¿Cuándo te habla tu esclavo, ¿le maullas para quedar bien con el?</p>
-        <p>¿<b>Te acarician sin que lo pidas</b> arruinando tu baño de sol?</p>
-        <p>¿Te <b>inventan voces</b> y tu ni hablas así?</p>
-        </div>
-    
-        <div id="Slogan">
-        <i>"Ser La Karen no es fácil, involucra más tiempo que el que tu dedicas a lamerte todo el día, además de amor y mucha paciencia :D".</i>
-        </div>
-    
-        <div id="Equipo">
-            <div id="Frase">
-            <a style="font-family: LibelSuit-Regular; font-size: 14px; color: #232323;">
-            ¡Ya llegaste al lugar correcto!
-            </a>
-            </div>
-            <div id="EqTrabajo">
-            <a style="font-family: LibelSuit-Regular; font-size: 14px; color: #444038;">
-            <b>El equipo esclavo de The whiskers®. </b>
-            </a>
-            </div>
-            <div id="RedSocial">
-            <a style="font-family: LibelSuit-Regular; color: #444038;">
-            Síguenos por <a href="https://www.facebook.com/thewhiskersclub"><img src="https://www.thewhiskers.club/Assets/Mailing/bienvenida/Icono_Facebook.png"/></a>
-            </a>
-            </div>
-            </div>
-    
-        <footer style="text-align: center; height: 50px; background: #b8c6d8; font-size: 10px; font-family: Source Sans Pro-Light 300/Semi-bold 600; left: 0; bottom: 0; line-height: 50px;">
-        The whiskers México, 2021
-        </footer>
-        </div>
-        
+            <div id="contenedor">
+                <div id="header">
+                    <img src="https://thewhiskers.club/assets/mailing/bienvenida/v2/Header.png" width="100%">
+                </div>
+                <div id="contenido">
+                    <div id="fecha">
+                        <p style="font-size:0.5em; font-family: Dosis, sans-serif;">
+                            '.$date.'
+                        </p>
+                    </div>
+                    <div id="bienvenida" style="text-align: center; align-items: center;">
+                        <p style=" font-size: 1.2em; font-family: Dosis, sans-serif;">Hola <b>'.$name.'</b>,<br>
+                        ¡Te damos la bienvenida!</p>
+                        <p id="texto">Ya eres un esclavo más... perdón, 
+                            un humano más que se registra en nuestro <b>Club social para 
+                            amantes de nosotros los gatos.</b></p>
+                    </div>
+                    <div id="datos">
+                        <img src="https://thewhiskers.club/assets/mailing/bienvenida/v2/Quots.png" width="100%" height="10%">
+                    </div>
+                </div>
+                <div id="footer">
+                    <div id="footer-c">
+                        <div id="frase" style="text-align: center; align-items: center;">
+                            <p style="font-family: Dosis, sans-serif; font-size: 1em;">"Entendemos que ser <b>La Karen no es fácil,</b> involucra
+                            mucho más tiempo del que yo dedico a lamerme todo
+                            el día, además de mucho amor y paciencia".</p>
+                        </div>
+                        <p style="text-align: center; font-family: Dosis, sans-serif; font-size: 1.1em;"><b><i>El Jefe Michi.</i></b></p>
+                        <p style="text-align: center;"><img src="https://thewhiskers.club/assets/mailing/bienvenida/v2/The_Whiskers_S.png" height="60vw"></p>
+                        <p style="font-size: 0.8em; font-family: Dosis, sans-serif;">
+                        <b>The whiskers México 2021.</b>
+                        <a href="https://web.facebook.com/thewhiskersclub"><img src="https://thewhiskers.club/assets/mailing/bienvenida/v2/Fb_icon.png" width="30%"  align="right"></a>
+                        <br>
+                        </p>
+                    </div>
+                </div>
+            </div> 
         </body>
         </html>
         ';
@@ -272,7 +138,7 @@ class MailTo
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         // More headers
         $headers .= 'From: <'.$from.'>' . "\r\n";
-        if(mail($receiver,$subject,$message,$headers))  
+        if(mail($receiver, $subject, $message, $headers))  
         {
             //Success Message
             // echo "El correo ha sido guardado!";

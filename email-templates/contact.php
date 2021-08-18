@@ -1,7 +1,7 @@
 
 <?php 
 include_once '../email-templates/subscribe-newsletter.php';
-include_once '../db/registry.php';
+include_once '../db/registro.php';
 include_once '../slack/slack.php';
 
 $emails = new MailTo();
@@ -13,13 +13,15 @@ $registry = new Registry();
     $from   = $_POST["email"];
     $michis = $_POST["michis"];
 	// $comment=$_POST["comment"];
-
+  
 	$reg = $registry->regnewMichi($name, $from, $michis);
     if ($reg == 2)
     {
       echo '
       <script type="text/JavaScript">
       document.getElementById("correo-duplicado").style.display="block";
+      const element = document.querySelector("#popup-duplicated");
+      element.classList.add("animate__animated", "animate__rollIn");
       </script>'; // Shows the duplicated user Popup
     return;
     }
@@ -28,6 +30,8 @@ $registry = new Registry();
       echo '
       <script type="text/JavaScript">
       document.getElementById("mensaje-incorrecto").style.display="block";
+      const element = document.querySelector("#popup-fail");
+      element.classList.add("animate__animated", "animate__rollIn");
       </script>'; // Shows the unsuccessfull message Popup
       return;
     }
@@ -36,6 +40,8 @@ $registry = new Registry();
       echo '
       <script type="text/JavaScript">
       document.getElementById("mensaje-correcto").style.display="block";
+      const element = document.querySelector("#popup-success");
+      element.classList.add("animate__animated", "animate__rollIn");
       </script>'; // Shows the successfull message Popup
       
       $emails->sendConfMail($from, $name, $michis); // Sends confirmation email

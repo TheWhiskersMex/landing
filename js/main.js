@@ -1675,11 +1675,12 @@ $(document).ready(function () {
                     
                     document.getElementById('michis').selectedIndex = 0;
                     document.getElementById('contact-us-button').disabled = true;
-                    $('#contact-form').reset(); // Clears all input fields
+                    //$('#contact-form').reset(); // Clears all input fields
 
                     $("#success-contact-form").html(result);
                     $("#success-contact-form").fadeIn("slow");
                     $('#success-contact-form').delay(4000).fadeOut("slow");
+                    console.log(result);
                 }
             });
         }

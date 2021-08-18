@@ -5,8 +5,11 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Registro the whiskers</title>            
     <?php
-    include_once('./src/router.php');
+    session_start(); // Saves the current session
     ?>
+    <!-- 
+    Hello JavaScript SDK for authenticating with OAuth2 (and OAuth1 with a oauth proxy)
+     -->
     <script src="./js/hello.all.js"></script>
     <style>
         @media screen and (max-width: 800px) {
@@ -62,10 +65,10 @@
 </head>
 
 <body>
+    <!-- Successfull message -->
     <div id="mensaje correcto" style="margin-top: 10%; background: #fff; width: 60%; max-width: 300px; margin: 0%; color: #000; font-family: Source Sans Pro-Light 300/Semi-bold600 ; ;
         text-align: center; vertical-align: center; min-width: 250px; min-height: 460px; border-radius: 5%; position: absolute; -webkit-box-shadow: -6px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-            -moz-box-shadow: -6px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0); box-shadow: -6px 6px 15px 2px rgba(0,0,0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0);
-            display:  ; font-size: 20px; ">
+            -moz-box-shadow: -6px 6px 15px 2px rgba(0, 0, 0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0); box-shadow: -6px 6px 15px 2px rgba(0,0,0,0.25), inset 0px 0px 1px 1px rgba(0, 0, 0, 0.0); font-size: 20px; ">
             <div id="cerrar" style="text-align: end;"> <a href="javascript:cerrar()"><img src="Assets\cancelar.png" width="50vw" height="50vw"></a></div> 
              <div id="logo">
             <img src="img\Logo_Mailing.png" width="180vh" height="50vh">
@@ -82,6 +85,12 @@
             <button id="logout">logout</button>
         </div>
 
+        <!-- 
+            SCRIPTS
+
+            -> Main JS
+            -> JQuery
+         -->
         <script src="../js/jquery.js"></script>
         <script src="./js/main.js"></script>
 </body>

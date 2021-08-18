@@ -1,6 +1,6 @@
 <?php
 session_start();
-define('ROOT', '/');
+define('ROOT', '/landing/');
 
 if (isset($_SERVER['REQUEST_URI']))
 {
@@ -26,7 +26,8 @@ if (isset($_SERVER['REQUEST_URI']))
             //        header('location: registro.php');
             //        break;
             //}
-            header('location: registro.php');
+            //header('location: registro.php');
+            require_once("registro.php");
             break;
 
         case ROOT . 'registro/correo.php':
@@ -46,12 +47,12 @@ if (isset($_SERVER['REQUEST_URI']))
             break;
 
         case ROOT . 'registro/profile.php':
-            if (!(@$_SESSION['status'] === "loggedin"))
-                header('location: registro.php');
+            if (!(@$_SESSION['status'] === "login"))
+            header('location: registro.php');
             break;
 
         default:
-            // echo 'access denied!';
+            header('location: https://thewhiskers.club/');
             break;
     }
 }

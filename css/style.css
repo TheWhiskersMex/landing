@@ -410,7 +410,7 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 
 
 /* 
-
+Sets the font style for email-template
 */
 
 @font-face
@@ -477,7 +477,7 @@ Sets the INPUT-text placeholder color
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
-
+/* Popup modal background */
 .modal
 {
     

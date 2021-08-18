@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>The Whiskers DB</title>
+
+<!-- BOOTSTRAP -->
 <link type="text/css" href="../../css/bootstrap.min.css" rel="stylesheet">
+<!-- SCRIPTS -->
 <script src="../../js/jquery.js"></script>
 <script src="./checktable.js"></script>
 
@@ -54,6 +57,7 @@ label {
 
 <body>
 <div class="main-wrapper">
+<!-- DATABASE TABLE -->
 <table class="table">
 	<thead>
 		<tr style="background-color: #6E564D; color: white;">
@@ -69,7 +73,6 @@ label {
 		</form>
 	    </th>
 	</tr>
-
 		<tr style="background-color:#D9D9D9">
 			<th width="1%">
             <label class="control control--checkbox">
@@ -86,10 +89,11 @@ label {
 	</thead>
 	<tbody>
         <?php
-		include("../config/config.php");
-		include("./function.php");
-		while($row = queryAll($table))
-		{
+        require_once('../config/config.php'); // gets the configuration to connect to the db
+        require_once('./function.php'); // 
+		$rows = queryAll($table); // returns all the rows of the db
+        while ($row = mysqli_fetch_object($rows))
+        { // draw each row returned
         ?>
             <tr>
               <th scope="row" style="background-color:#fff;">
@@ -97,17 +101,17 @@ label {
                       <input type="checkbox" />
                   </label>
                   <div class="control__indicator"></div>
-                
               </th>
-			<td><?php echo $row->ID;?></td>
-			<td><?php echo $row->name;?></td>
-			<td><?php echo $row->email;?></td>
-			<td><?php echo $row->michis;?></td>
-			<td><?php echo $row->date;?></td>
+			<td><?php echo $row->ID; ?></td>
+			<td><?php echo $row->name; ?></td>
+			<td><?php echo $row->email; ?></td>
+			<td><?php echo $row->michis; ?></td>
+			<td><?php echo $row->date; ?></td>
 		</tr>
-	<?php } ?>
+	<?php
+        }
+		?>
         </tbody>
-        
 </table>
 </div>
 </body>

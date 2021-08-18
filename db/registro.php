@@ -3,7 +3,7 @@ class Registry
 {
 	public function regnewMichi($name, $email, $michis)
 	{
-        include_once("./config/config.php");
+        require_once('../db/config/config.php');
         $pdo = null;
         try
         {
@@ -18,21 +18,6 @@ class Registry
             // print "Error: " . $e->getMessage() . "<br/>";
             return 1;
         }
-
-        if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
-            $origin = $_SERVER['HTTP_ORIGIN']; // HTTP Origin header
-            echo($origin);
-        }
-        else if (array_key_exists('HTTP_REFERER', $_SERVER)) {
-            $origin = $_SERVER['HTTP_REFERER']; // HTTP Referer header
-            echo($origin);
-        }
-        else {
-            $origin = $_SERVER['REMOTE_ADDR']; // HTTP Client's Public IP
-            echo($origin);
-        }
-        $pdo->beginTransaction();
-
         $sql = "CREATE TABLE IF NOT EXISTS $table(
                 ID INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR( 250 ) NOT NULL,
@@ -49,10 +34,10 @@ class Registry
             // Unable to create the new table
             return 1;
         }
-        // Executes a query to verify if an email already exists in db
-        $stmt = $pdo->prepare("SELECT * FROM $table WHERE emai=:email");
         try
         {
+            // Executes a query to verify if an email already exists in db
+            $stmt = $pdo->prepare("SELECT * FROM $table WHERE email=:email");
             $stmt->bindParam(":email", $email);
         }
         catch (PDOException $e)
@@ -67,11 +52,11 @@ class Registry
         $query = $stmt->fetch(); // Fetches the row
         if ($query)
         {
-            // The email address is already in the table
+            // The email address is already registered
             return 2;
         }
-        // Inserts a new registry
         unset($stmt); // Destroy the previous value
+        // Inserts a new registry
         $stmt = $pdo->prepare("INSERT INTO $table (name, email, michis) VALUES (:name, :email, :michis)");
         try
         {
@@ -93,7 +78,6 @@ class Registry
             //echo "Oh no, hubo algun error";
             return 1;
         }
-        $pdo->commit();
         return 0; //
     }
 }

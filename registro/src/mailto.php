@@ -6,10 +6,8 @@ class MailTo
         $from ="elmichi@thewhiskers.club";
         $subject="Verificación de Cuenta";
         $message = '
-        <!doctype html>
         <html>
         <head>
-        <meta charset="UTF-8">
         <title>Verificación de Cuenta</title>
         <style>
         footer
@@ -41,7 +39,7 @@ class MailTo
         Confirme su correo electrónico
         </h2>
         <p>
-        Acaba de crear una cuenta en <span style="font-weight: bold;"><a href="http://www.thewhiskers.club">The Whiskers</a></span>. Confirme su direcci�n de correo electr�nico para informarnos que usted es el propietario leg�timo de esta cuenta.
+        Acaba de crear una cuenta en <span style="font-weight: bold;"><a href="https://www.thewhiskers.club">The Whiskers</a></span>. Confirme su dirección de correo electrónico para informarnos que usted es el propietario legítimo de esta cuenta.
         </p>
         </td>
         </tr>

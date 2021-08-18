@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <usuario>
+    <nombre>Alain</nombre>
+    <email>alan@gmail.com</email>
+    <michis>2</michis>
+  </usuario>
+  <usuario>
+    <nombre>Joel</nombre>
+    <email>joel@gmail.com</email>
+    <michis>2</michis>
+  </usuario>
+</xml>

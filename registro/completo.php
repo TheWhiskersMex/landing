@@ -77,7 +77,7 @@
 <div id="mensajecorrecto">
     <div id="cerrar" style="text-align: end; margin-top: 2%; margin-right: 2%;"> <a href="javascript:cerrar()"><img src="Assets\cancelar.png" width="50vw" height="50vw"></a></div> 
     <div id="logo">
-    <img src="img\TheWhiskers L.png" width="240vh" height="65vh">
+    <img src="img\TheWhiskers L.png" width="240" height="65">
     </div>
     <div id="mensaje" style="text-align: center; margin-top: 5%; margin-bottom: 5%;">
     Su registro se realizo<br> correctamente
